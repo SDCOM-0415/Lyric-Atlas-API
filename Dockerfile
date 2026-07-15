@@ -12,6 +12,8 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+RUN pnpm build
+
 ENV NODE_ENV=production
 ENV PORT=3000
 
