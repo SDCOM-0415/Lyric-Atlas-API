@@ -149,6 +149,49 @@
     pnpm run start
     ```
 
+## Docker 部署
+
+### 启动 Docker 容器
+
+```bash
+docker run -d \
+  --name lyric-atlas-api \
+  -p 3000:3000 \
+  -e EXTERNAL_NCM_API_URL=https://你的NCM接口地址 \
+  ghcr.io/<GitHub用户名>/<仓库名>:latest
+```
+
+服务启动后，可以访问健康检查接口：
+
+```text
+http://localhost:3000/api
+```
+
+获取歌词：
+
+```text
+http://localhost:3000/api/search?id=449818741
+```
+
+查询歌词元数据：
+
+```text
+http://localhost:3000/api/lyrics/meta?id=449818741
+```
+
+### 使用自定义端口
+
+如果需要修改容器端口，可以通过 `PORT` 环境变量配置：
+
+```bash
+docker run -d \
+  --name lyric-atlas-api \
+  -p 8080:8080 \
+  -e PORT=8080 \
+  -e EXTERNAL_NCM_API_URL=https://你的NCM接口地址 \
+  ghcr.io/<GitHub用户名>/<仓库名>:latest
+```
+
 ## 环境变量
 
 *   `EXTERNAL_NCM_API_URL` ( **必需** ): 指定外部回退 NCM API 的基础 URL (例如: `https://ncm-api/lyric/new`)。服务器在启动时会检查此变量。
