@@ -26,7 +26,7 @@ setupCacheCleanup();
 
 // --- App Setup ---
 // Remove the Env type parameter from Hono
-const app = new Hono().basePath('/api');
+export const app = new Hono().basePath('/api');
 
 // --- CORS Middleware ---
 app.use('*', cors({
@@ -162,3 +162,4 @@ app.get('/lyrics/meta', async (c) => {
 
 // --- Export for Vercel ---
 export default handle(app)
+

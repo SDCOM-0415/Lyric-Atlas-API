@@ -2,7 +2,7 @@
   "name": "lyric-atlas-api",
   "type": "module",
   "scripts": {
-    "start": "vercel dev",
+    "start": "tsx server.ts",
     "deploy": "vercel deploy --prod"
   },
   "dependencies": {
